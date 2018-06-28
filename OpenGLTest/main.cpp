@@ -3,23 +3,23 @@
 
 using namespace std;
 
-GLint Width = 512, Height = 512;
+GLint iWidth = 512, iHeight = 512;
 
-const int CubeSize = 200;
+const int iCubeSize = 300;
 
 void Display(void)
 {
     int left, right, top, bottom;
 
-    left  = (Width - CubeSize) / 2;
-    right = left + CubeSize;
-    bottom = (Height - CubeSize) / 2;
-    top = bottom + CubeSize;
+    left  = (iWidth - iCubeSize) / 2;
+    right = left + iCubeSize;
+    bottom = (iHeight - iCubeSize) / 2;
+    top = bottom + iCubeSize;
 
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glColor3ub(255,0,0);
+    glColor3ub(255, 255, 255);
     glBegin(GL_QUADS);
       glVertex2f(left,bottom);
       glVertex2f(left,top);
@@ -32,8 +32,8 @@ void Display(void)
 
 void Reshape(GLint w, GLint h)
 {
-    Width = w;
-    Height = h;
+    iWidth = w;
+    iHeight = h;
     glViewport(0, 0, w, h);
 
     glMatrixMode(GL_PROJECTION);
@@ -44,24 +44,28 @@ void Reshape(GLint w, GLint h)
     glLoadIdentity();
 }
 
-void Keyboard(unsigned char key, int x, int y)
-{
-#define ESCAPE '\033'
-
-    if( key == ESCAPE )
-        exit(0);
-}
+//void Keyboard(unsigned char key, int x, int y)
+//{
+//#define ESCAPE '\033'
+//
+//    if( key == ESCAPE )
+//        exit(0);
+//}
 
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB);
-    glutInitWindowSize(Width, Height);
-    glutCreateWindow("Red square example");
+    glutInitWindowPosition(100, 100);
+
+    //Reshape(1000, 1000);
+
+    glutInitWindowSize(iWidth, iHeight);
+    glutCreateWindow("OpenGL example");
 
     glutDisplayFunc(Display);
     glutReshapeFunc(Reshape);
-    glutKeyboardFunc(Keyboard);
+    //glutKeyboardFunc(Keyboard);
 
     glutMainLoop();
 
