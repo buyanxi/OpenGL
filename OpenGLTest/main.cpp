@@ -5,7 +5,7 @@ using namespace std;
 
 GLint iWidth = 512, iHeight = 512;
 
-const int iCubeSize = 300;
+const int iCubeSize = 200;
 
 void Display(void)
 {
